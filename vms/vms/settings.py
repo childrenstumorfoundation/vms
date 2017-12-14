@@ -63,10 +63,11 @@ WSGI_APPLICATION = 'vms.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'vms',
-        'USER': 'vmsadmin',
-        'PASSWORD': '0xdeadbeef',
-        'HOST': 'localhost',
+        'NAME': os.environ.get('DATABASE_NAME', 'vms'),
+        'USER': os.environ.get('DATABASE_USER', 'vmsadmin'),
+        'PASSWORD': os.environ.get('DATABASE_PASSWORD','0xdeadbeef'),
+        'HOST': os.environ.get('DATABASE_HOST', 'localhost'),
+        'PORT': os.environ.get('DATABASE_PORT', '5432')
     }
 }
 
